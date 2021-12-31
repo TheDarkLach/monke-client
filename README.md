@@ -20,4 +20,4 @@ Custom made hacked client with multiple features
 
 ![2021-12-26_19 40 40](https://user-images.githubusercontent.com/50496663/147432348-2e9cfe44-4a17-482b-89b9-2641cd9b35e9.png)
 
-Installer coming soon :)
+Join discord server if you want more info :) https://discord.gg/VmsUCu7c4A
