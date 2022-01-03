@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Monke Client
 
 You can download the installer [here](https://thedarklach.github.io/installer/Monkeinstaller.jar) or if you would rather download a .zip, you can do so [here](https://TheDarkLach.github.io/installer/Monke.zip).
 
