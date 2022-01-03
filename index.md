@@ -1,9 +1,7 @@
 ## Welcome to GitHub Pages
-https://TheDarkLach.github.io/installer/Monke.jar
 
-You can use the [editor on GitHub](https://github.com/TheDarkLach/monkeclient/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+You can download the installer [here](https://thedarklach.github.io/installer/Monkeinstaller.jar) or if you would rather download a .zip, you can do so [here](https://TheDarkLach.github.io/installer/Monke.zip).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
