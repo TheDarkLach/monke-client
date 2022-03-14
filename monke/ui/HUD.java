@@ -19,38 +19,12 @@ public class HUD
 	
 	public Minecraft mc = Minecraft.getMinecraft();
 	
-	/* old sorting method
-	public static class ModuleComparator implements Comparator<Module>
-	{
 
-		@Override
-		public int compare(Module arg0, Module arg1) 
-		{
-			
-			if(Minecraft.getMinecraft().fontRendererObj.getStringWidth(arg0.name) > Minecraft.getMinecraft().fontRendererObj.getStringWidth(arg1.name))
-			{
-				return -1;
-			}
-			if(Minecraft.getMinecraft().fontRendererObj.getStringWidth(arg0.name) < Minecraft.getMinecraft().fontRendererObj.getStringWidth(arg1.name))
-			{
-				return 1;
-			}
-			
-			return 0;
-		}
-		
-	}*/
-	//nvm bruh i need forge for this shit
-	private final ResourceLocation watermark = new ResourceLocation("Monke/Capture.PNG");
-	
-	
-	
 	public void draw()
 	{
 		ScaledResolution sr = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 		FontRenderer fr = mc.fontRendererObj;
 		
-		//Collections.sort(Client.modules, new ModuleComparator());
 		
 		Client.modules.sort(Comparator.comparingInt(m -> fr.getStringWidth(((Module)m).name)).reversed());
 		
@@ -61,12 +35,9 @@ public class HUD
 		GlStateManager.translate(-4, -4, 0);
 		fr.drawStringWithShadow(Client.name + " v" + Client.version, 4, 4, -1);
 		GlStateManager.popMatrix();
-		
-		mc.renderEngine.bindTexture(watermark);
-		Gui.drawScaledCustomSizeModalRect(90, sr.getScaledHeight() - 30, 0, 0, 25, 25, 25, 25, 25, 25);
-		
+
+
 		int count = 0;
-		int count2 = 0;
 		
 		for(Module m : Client.modules)
 		{
@@ -82,6 +53,7 @@ public class HUD
 			//boxes behind actual hack
 			Gui.drawRect(sr.getScaledWidth() - fr.getStringWidth(m.name) - 8, offset, sr.getScaledWidth(), 6 + fr.FONT_HEIGHT + offset, 0x90000000);
 			fr.drawStringWithShadow(m.name, sr.getScaledWidth() - fr.getStringWidth(m.name) - 4, 4 + offset, -1);
+			
 			
 			count++;
 		}

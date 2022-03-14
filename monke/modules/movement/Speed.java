@@ -11,6 +11,7 @@ public class Speed extends Module
 {
 	
 	public NumberSetting speed = new NumberSetting("Speed", 2, 1, 10, 1);
+	
 	public Speed()
 	{
 		super("Speed", Keyboard.KEY_NONE, Category.MOVEMENT);
@@ -19,7 +20,7 @@ public class Speed extends Module
 	
 	public void onEnable()
 	{
-
+		
 	}
 	public void onDisable()
 	{
@@ -37,6 +38,7 @@ public class Speed extends Module
 				if(mc.thePlayer.moveForward > 0 && !mc.thePlayer.isUsingItem() && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally)
 				{
 					mc.thePlayer.speedInAir=(float) (0.02f*speed.getValue());
+
 					//mc.thePlayer.speedOnGround=3;
 				}
 			}

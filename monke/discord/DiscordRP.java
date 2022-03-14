@@ -6,6 +6,7 @@ import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import net.arikia.dev.drpc.DiscordUser;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
+import net.minecraft.client.Minecraft;
 
 public class DiscordRP
 {
@@ -26,7 +27,6 @@ public class DiscordRP
             }
         }).build();
 
-        //wonder what would happen if i put scoobys id
         DiscordRPC.discordInitialize("924458669725339699", handlers, true);
 
         new Thread("Discord RPC Callback")
@@ -51,69 +51,11 @@ public class DiscordRP
     public void update(String firstLine, String secondLine)
     {
         DiscordRichPresence.Builder b = new DiscordRichPresence.Builder(secondLine);
-        b.setBigImage("large",":(");
+        b.setBigImage("large", Minecraft.getMinecraft().getSession().getUsername());
         b.setDetails(firstLine);
         b.setStartTimestamps(created);
 
         DiscordRPC.discordUpdatePresence(b.build());
     }
 }
-
-//some old code....
-
-/*public class DiscordRP implements ReadyCallback
-{
-    private boolean running = true;
-    private static final Minecraft mc = Minecraft.getMinecraft();
-    DiscordRichPresence richPresence;
-
-    public DiscordRP() {
-        richPresence = new DiscordRichPresence
-                .Builder("https://github.com/TheDarkLach")
-                .setBigImage("large", "")
-                .setDetails("Loading Monke...")
-                .setStartTimestamps(System.currentTimeMillis())
-                .build();
-
-        init();
-        startTask();
-        DiscordRPC.discordUpdatePresence(richPresence);
-    }
-
-    private void init() {
-        DiscordEventHandlers handlers = new DiscordEventHandlers.Builder()
-                .setReadyEventHandler((user) ->
-                        System.out.printf("Connected to %s#%s (%s)%n", user.username, user.discriminator,
-                                user.userId)).build();
-
-        DiscordRPC.discordInitialize("924458669725339699", handlers, true);
-    }
-
-    public void startTask() {
-        Executors.newSingleThreadScheduledExecutor()
-                .scheduleWithFixedDelay(() -> {
-                    richPresence.details =
-                            mc.thePlayer == null ? "Avid Monke Lover" : "Nick: " + mc.thePlayer.getName();
-                    richPresence.state = mc.getCurrentServerData() == null ? "Singleplayer"
-                            : "Server: " + mc.getCurrentServerData().serverIP;
-                    DiscordRPC.discordUpdatePresence(richPresence);
-                }, 10, 10, TimeUnit.SECONDS);
-    }
-
-    public DiscordRichPresence getRichPresence() {
-        return richPresence;
-    }
-
-    public void shutdown()
-    {
-        running = false;
-        DiscordRPC.discordShutdown();
-    }
-
-    @Override
-    public void apply(DiscordUser discordUser)
-    {
-        System.out.println("Initialized DiscordRichPresence API.");
-    }
-}*/
 

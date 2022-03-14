@@ -1,5 +1,7 @@
 package monke.discord;
 
+import monke.ui.SplashProgress;
+
 public class ClientRP
 {
     private static final ClientRP INSTANCE = new ClientRP();
@@ -10,13 +12,10 @@ public class ClientRP
 
     private DiscordRP discordRP = new DiscordRP();
 
-    /*public void init()
-    {
-       discordRP.startTask();
-    }*/
 
     public void init()
     {
+        SplashProgress.setProgress(1, "Client - Initializing Discord RP");
         discordRP.start();
     }
 
